@@ -63,7 +63,7 @@ After creating your own stylefiles, you can deploy them to gh-pages.
 ## 5. Develop and Deploy Web Application
 - [mapbox-gl-js-client](https://github.com/narwassco/mapbox-gl-js-client) : It is an web application which is using [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/). 
 
-We have already performed the website, so you just edit `config.js`(https://github.com/narwassco/mapbox-gl-js-client/blob/master/src/config.js) and build the application. Eventually, deploy it to gh-pages. [This](https://narok.water-gis.com) is our vector tile application. Let me know if you have some ideas or feedbacks.
+We have already performed the website, so you just edit [config.js](https://github.com/narwassco/mapbox-gl-js-client/blob/master/src/config.js) and build the application. Eventually, deploy it to gh-pages. [This](https://narok.water-gis.com) is our vector tile application. Let me know if you have some ideas or feedbacks.
 
 ## 6. Update Vector Tile data on gh-pages frequently
 I am still thinking how we can automate to update vector tile easily on daily-basis or weekly-basis. Now I think we may create some batch script to deploy them to gh-pages, then we use Windows Task Scheduler to launch it. 
