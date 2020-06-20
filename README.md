@@ -26,6 +26,8 @@ In the current setting, we have prepared following layers for `Narok Water and S
 |dma|Polygon|13|17|District Metered Area(DMA) for Non-Revenue Water Management|
 |point_annotation|Point|10|18|We put all the annotation data here if we need to show some label.|
 
+In Narok water, although we have a pumping station at the WTP, we don't have layer for pump. I know it is significant for a water company. So, you may need to add a layer for pumping station.
+
 ## 2. Design your Mapbox Style on Mapbox Studio
 Next step is to design your own Mapbox Style on Mapbox Studio by using `mbtile` which was produced before.
 
@@ -45,8 +47,11 @@ You can see official manual of Mapbox Studio [here](https://docs.mapbox.com/stud
 
 ## 3. Deploy Vector Tile to gh-pages
 - [vt-map](https://github.com/narwassco/vt-map)
-  - [postgis2geojson](https://github.com/narwassco/postgis2geojson)
-  - [mbtiles2pbf](https://github.com/narwassco/mbtiles2pbf)
+  This module will use the following submodules to create Mapbox Vector Tile for deployment to gh-pages.
+  - [postgis2geojson](https://github.com/narwassco/postgis2geojson): It creates `mbtiles` from PostGIS.
+  - [mbtiles2pbf](https://github.com/narwassco/mbtiles2pbf): It converts from `mbtiles` to `pbf(mvt)` tiles.
+
+This module uses [tippecanoe](https://github.com/mapbox/tippecanoe) for producing mbtiles and uses [mbutil](https://github.com/mapbox/mbutil) to convert `mbtiles`. However, Narok water's GIS computer is Windows 10 Pro, so it is not easy to run `tippecanoe`, I developed `Docker` to create Mapbox Vector Tile.
 
 ## 4. Deploy Stylefiles to gh-pages
 - [mapbox-stylefiles](https://github.com/narwassco/mapbox-stylefiles) : It manages our Mapbox Stylefiles. Those Stylefiles will be published on gh-pages of this repository.
@@ -58,7 +63,10 @@ After creating your own stylefiles, you can deploy them to gh-pages.
 ## 5. Develop and Deploy Web Application
 - [mapbox-gl-js-client](https://github.com/narwassco/mapbox-gl-js-client) : It is an web application which is using [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/). 
 
-We have already performed the website, so you just edit `config.js`(https://github.com/narwassco/mapbox-gl-js-client/blob/master/src/config.js) and build the application. Eventually, deploy it to gh-pages.
+We have already performed the website, so you just edit `config.js`(https://github.com/narwassco/mapbox-gl-js-client/blob/master/src/config.js) and build the application. Eventually, deploy it to gh-pages. [This](https://narok.water-gis.com) is our vector tile application. Let me know if you have some ideas or feedbacks.
+
+## 6. Update Vector Tile data on gh-pages frequently
+I am still thinking how we can automate to update vector tile easily on daily-basis or weekly-basis. Now I think we may create some batch script to deploy them to gh-pages, then we use Windows Task Scheduler to launch it. 
 
 ---
 Documented by Jin IGARASHI <br>
