@@ -1,7 +1,10 @@
 # awesome-narok-vector-tiles
 This is awesome implementations of the Mapbox Vector Tile for Narok Water
 
+## Procedures
 The procedures of creating vector tile map could be as follows.
+
+![procedures](./images/procedures.png)
 
 ## 1. Create mbtiles from PostGIS
 - [postgis2geojson](https://github.com/narwassco/postgis2geojson) : This module will create `mbtiles` by GeoJSON data which is retrieved from `PostGIS`.
