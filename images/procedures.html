@@ -384,13 +384,13 @@ code {
     x-->>y: Upload mbtiles
     y-->>y: Edit Mapbox Stylefiles
     y-->>x: Download Mapbox Stylefiles
-    x->c: svg icons
-    c->c: produce sprite files
-    c->z: sprite file
-    x-->x: Edit Stylefiles for gh-pages
-    x-->z: Mapbox Stylefiles
-    x-->x: Develop Web app by Mapbox GL JS
-    x->z: Upload HTML/JavaScript to gh-pages
+    x->>c: svg icons
+    c->>c: produce sprite files
+    c->>z: sprite file
+    x-->>x: Edit Stylefiles for gh-pages
+    x-->>z: Mapbox Stylefiles
+    x-->>x: Develop Web app by Mapbox GL JS
+    x->>z: Upload HTML/JavaScript to gh-pages
 </div></code></pre>
 
 </body>
