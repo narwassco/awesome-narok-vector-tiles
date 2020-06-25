@@ -8,8 +8,7 @@ sequenceDiagram
     participant c as sprite-create
     participant y as Mapbox Studio
     participant z as gh-pages
-    db->>x: GeoJSON
-    x->>a: GeoJSON
+    db->>a: GeoJSON
     Note over a: tippecanoe on vt-map(Docker)
     a->>x: mbtiles
     x->>b: mbtiles
