@@ -19,18 +19,18 @@ In the current setting, we have prepared following layers for `Narok Water and S
 |Layer|Geometry Type|Min Zoom|Max Zoom|Remarks|
 |---|---|---|---|---|
 |pipeline|LineString|10|18|It includes all the types of pipeline, but you may seperate by type of pipe such as main line or secondary line if necessary.|
-|meter|Point|16|18|It only includes household connections.|
-|flowmeter|Point|14|18|It only includes flow meters to cover wider range of zoom level than consumer meters.|
-|valve|Point|15|18|eg. gate valve, sluice valve, air valve, non-return valve, etc.|
-|firehydrant|Point|15|18|It's firehydrant layer|
-|washout|Point|15|18|It's washout layer|
-|tank|Polygon|13|18|Distribution tank layer as `Polygon`. However, you might need to change geometry type to `Point`|
-|plant|Polygon|10|18|It incudes boundries of Water Treatment Plant and Water Intake|
-|parcels|Polygon|16|18|It is polygon of parcels data which was provided by Narok town planning office.|
-|parcels_annotation|Point|17|18|We seperated parcel number from other parcel data due to reducing the size of data.|
-|village|Polygon|10|17|Narok water is zoning some area which is called `village`, you may change layer name for your company.|
-|dma|Polygon|13|17|District Metered Area(DMA) for Non-Revenue Water Management|
-|point_annotation|Point|10|18|We put all the annotation data here if we need to show some label.|
+|meter|Point|16|16|It only includes household connections.|
+|flowmeter|Point|14|16|It only includes flow meters to cover wider range of zoom level than consumer meters.|
+|valve|Point|15|16|eg. gate valve, sluice valve, air valve, non-return valve, etc.|
+|firehydrant|Point|15|16|It's firehydrant layer|
+|washout|Point|15|16|It's washout layer|
+|tank|Polygon|13|16|Distribution tank layer as `Polygon`. However, you might need to change geometry type to `Point`|
+|plant|Polygon|10|16|It incudes boundries of Water Treatment Plant and Water Intake|
+|parcels|Polygon|16|16|It is polygon of parcels data which was provided by Narok town planning office.|
+|parcels_annotation|Point|16|16|We seperated parcel number from other parcel data due to reducing the size of data.|
+|village|Polygon|10|16|Narok water is zoning some area which is called `village`, you may change layer name for your company.|
+|dma|Polygon|13|16|District Metered Area(DMA) for Non-Revenue Water Management|
+|point_annotation|Point|10|16|We put all the annotation data here if we need to show some label.|
 
 In Narok water, although we have a pumping station at the WTP, we don't have layer for pump. I know it is significant for a water company. So, you may need to add a layer for pumping station.
 
@@ -71,8 +71,23 @@ After creating your own stylefiles, you can deploy them to gh-pages.
 
 We have already performed the website, so you just edit [config.js](https://github.com/narwassco/mapbox-gl-js-client/blob/master/src/config.js) and build the application. Eventually, deploy it to gh-pages. [This](https://narok.water-gis.com) is our vector tile application. Let me know if you have some ideas or feedbacks.
 
+We are using customer domain. So please make sure to delete `CNAME` file from the repository before deploying.
+
+Also you can delete our source code related Google Analytics in `index.html` if you don't use it. Or you can change tracking ID to be yours.
+
 ## 6. Update Vector Tile data on gh-pages frequently
-I am still thinking how we can automate to update vector tile easily on daily-basis or weekly-basis. Now I think we may create some batch script to deploy them to gh-pages, then we use Windows Task Scheduler to launch it. 
+### Use Task Scheduler of Windows
+`create_vt.bat` under `vt-map` module is a batch file for updating your vector tiles and deploy to gh-pages.
+
+You can use `Task Scheduler` app in Windows to create a task to launch `create_vt.bat` in daily-basis or weekly-basis. So your GIS computer can update vectortiles data automatically and frequently.
+
+`create_vt.bat` has the following scripts. Please change first row to be your installed directory.
+```
+cd C:\docker\vt-map  # change directory path for yours
+git pull origin master
+docker-compose up
+npm run deploy
+```
 
 ---
 Documented by Jin IGARASHI <br>
