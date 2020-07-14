@@ -10,9 +10,9 @@ The procedures of creating vector tile map could be as follows.
 ![procedures](./images/procedures.png)
 
 ## 1. Create mbtiles from PostGIS
-- [postgis2geojson](https://github.com/narwassco/postgis2geojson) : This module will create `mbtiles` by GeoJSON data which is retrieved from `PostGIS`.
+- [postgis2mbtile](https://github.com/narwassco/postgis2mbtile) : This module will create `mbtiles` by GeoJSON data which is retrieved from `PostGIS`.
 
-First of all, you need to make SQL queries for each layer on [config.js](https://github.com/narwassco/postgis2geojson/blob/master/config.js), so `postgis2geojson` tool will extract required data from PostGIS and a mbtiles will be created.
+First of all, you need to make SQL queries for each layer on [config.js](https://github.com/narwassco/postgis2mbtile/blob/master/config.js), so `postgis2geojson` tool will extract required data from PostGIS and a mbtiles will be created.
 
 In the current setting, we have prepared following layers for `Narok Water and Sewerage Services Co., Ltd`.
 
@@ -54,7 +54,7 @@ You can see official manual of Mapbox Studio [here](https://docs.mapbox.com/stud
 ## 3. Deploy Vector Tile to gh-pages
 - [vt-map](https://github.com/narwassco/vt-map)
   This module will use the following submodules to create Mapbox Vector Tile for deployment to gh-pages.
-  - [postgis2geojson](https://github.com/narwassco/postgis2geojson): It creates `mbtiles` from PostGIS.
+  - [postgis2mbtile](https://github.com/narwassco/postgis2mbtile): It creates `mbtiles` from PostGIS.
   - [mbtiles2pbf](https://github.com/narwassco/mbtiles2pbf): It converts from `mbtiles` to `pbf(mvt)` tiles.
 
 This module uses [tippecanoe](https://github.com/mapbox/tippecanoe) for producing mbtiles and uses [mbutil](https://github.com/mapbox/mbutil) to convert `mbtiles`. However, Narok water's GIS computer is Windows 10 Pro, so it is not easy to run `tippecanoe`, I developed `Docker` to create Mapbox Vector Tile.
