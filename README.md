@@ -43,14 +43,6 @@ You may need to create an account of Mapbox Studio. Then, please keep your publi
 
 You can see official manual of Mapbox Studio [here](https://docs.mapbox.com/studio-manual/overview/).
 
-## 3. Deploy Sprite files on gh-pages
-- [sprite-create](https://github.com/narwassco/sprite-create) : This module will create sprite file from [mapbox/maki](https://github.com/mapbox/maki) icons and [water-icons](https://github.com/narwassco/water-icons) icons. The Spritefiles will be published on gh-pages of this repository.
-
-    the following repositories manage our icons which are being used in our style files.
-  - [water-icons](https://github.com/narwassco/water-icons) : It includes our own customized icon for water assets.
-  - [mapbox-street-icons](https://github.com/narwassco/mapbox-street-icons) : It includes icons of Mapbox Street style and customized `water-icons`.
-  - [mapbox-satellite-icons](https://github.com/narwassco/mapbox-satellite-icons):It includes icons of Mapbox Satellite style and customized `water-icons`.
-
 ## 3. Deploy Vector Tile to gh-pages
 - [vt-map](https://github.com/narwassco/vt-map)
   This module will use the following submodules to create Mapbox Vector Tile for deployment to gh-pages.
@@ -60,12 +52,21 @@ You can see official manual of Mapbox Studio [here](https://docs.mapbox.com/stud
 
 This module uses [tippecanoe](https://github.com/mapbox/tippecanoe) for producing mbtiles and uses [mbutil](https://github.com/mapbox/mbutil) to convert `mbtiles`. However, Narok water's GIS computer is Windows 10 Pro, so it is not easy to run `tippecanoe`, I developed `Docker` to create Mapbox Vector Tile.
 
-## 4. Deploy Stylefiles to gh-pages
-- [mapbox-stylefiles](https://github.com/narwassco/mapbox-stylefiles) : It manages our Mapbox Stylefiles. Those Stylefiles will be published on gh-pages of this repository.
+## 4. Deploy Stylefiles and Sprite files to gh-pages
+### Create Stylefiles
+- [mapbox-stylefiles](https://github.com/narwassco/mapbox-stylefiles) : It manages our Mapbox Stylefiles and sprite files. Those Stylefiles will be published on gh-pages of this repository.
 
 When you edit your own stylefile, you may download it from Mapbox Studio, then you can delete unnecessary contents from the stylefile, and changed url of `vector tile` and `sprite file` on it.
 
-After creating your own stylefiles, you can deploy them to gh-pages.
+### Create Sprite files
+- [sprite-creator](https://github.com/watergis/sprite-creator) : This module will create sprite file from particular icons, and it was intergrated in [mapbox-stylefiles](https://github.com/narwassco/mapbox-stylefiles) repository. The module will generate sprite files under the same direcotory of stylefiles.
+
+    the following repositories manage our icons which are being used in our style files.
+  - [water-icons](https://github.com/narwassco/water-icons) : It includes our own customized icon for water assets.
+  - [mapbox-street-icons](https://github.com/narwassco/mapbox-street-icons) : It includes icons of Mapbox Street style and customized `water-icons`.
+  - [mapbox-satellite-icons](https://github.com/narwassco/mapbox-satellite-icons):It includes icons of Mapbox Satellite style and customized `water-icons`.
+
+After creating your own stylefiles and sprite files, you can deploy them to gh-pages.
 
 ## 5. Develop and Deploy Web Application
 - [mapbox-gl-js-client](https://github.com/narwassco/mapbox-gl-js-client) : It is an web application which is using [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/). 
